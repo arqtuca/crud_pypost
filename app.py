@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-import uvicorn
+from uvicorn import uvicorn
 import psycopg2
 from pydantic import BaseModel
 
@@ -111,4 +111,10 @@ def deletar_aluno(id: int):
   return id
 
 if __name__ == '__main__':
-  uvicorn.run(app, host='00.00.00.00', port=8000)
+
+  # Atualiza o código para passar o parâmetro send à função principal do aplicativo
+
+  from gunicorn import gunicorn
+
+  def main():
+    app
