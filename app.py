@@ -13,7 +13,7 @@ class Aluno(BaseModel):
   numero_sala: int
 
 
-app = FastAPI()
+app = FastAPI(debug=True)
 
 @app.get('/conectar')
 def conectar():
