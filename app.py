@@ -19,9 +19,10 @@ app = FastAPI()
 def conectar():
 
   connection = psycopg2.connect(
-    host="localhost",
-    user="postgres",
-    password="123456",
+    host="dpg-ckushv3amefc73cek860-a.oregon-postgres.render.com",
+    port=5432,
+    user="root",
+    password="tOqBSmsaLEie6ZSM2GPcewVCZ1DScvL7",
     database="bd_escola"
   )
   return connection
@@ -80,6 +81,34 @@ def get_alunos_por_nota(nota: float):
   alunos = cursor.fetchall()
 
   return alunos
+
+@app.post('/atualizar_aluno/<id>')
+def atualizar_aluno(id: int, aluno: Aluno):
+
+  connection = conectar()
+  cursor = connection.cursor()
+
+  # Atualiza o aluno no banco de dados
+  sql = "UPDATE alunos SET nome = %s, idade = %s, nota_primeiro_semestre = %s, nota_segundo_semestre = %s, nome_professor = %s, numero_sala = %s WHERE id = %s"
+  val = (aluno.nome, aluno.idade, aluno.nota_primeiro_semestre, aluno.nota_segundo_semestre, aluno.nome_professor, aluno.numero_sala, id)
+  cursor.execute(sql, val)
+
+  connection.commit()
+  return aluno
+
+@app.delete('/deletar_aluno/<id>')
+def deletar_aluno(id: int):
+
+  connection = conectar()
+  cursor = connection.cursor()
+
+  # Exclui o aluno do banco de dados
+  sql = "DELETE FROM alunos WHERE id = %s"
+  val = (id,)
+  cursor.execute(sql, val)
+
+  connection.commit()
+  return id
 
 if __name__ == '__main__':
   uvicorn.run(app, host='00.00.00.00', port=8000)

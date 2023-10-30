@@ -1,39 +1,3 @@
-swagger: '2.0'
-info:
-  title: Meu CRUD Python to PostgreSQL
-  description: API para realizar operações CRUD em um banco de dados PostgreSQL
-  version: 1.0.0
-
-paths:
-  /alunos:
-    get:
-      tags:
-        - Alunos
-      summary: Retorna uma lista de alunos
-      responses:
-        200:
-          description: Lista de alunos
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Aluno'
-
-    post:
-      tags:
-        - Alunos
-      summary: Cria um novo aluno
-      parameters:
-        - name: aluno
-          in: body
-          description: Aluno a ser criado
-          schema:
-            $ref: '#/definitions/Aluno'
-      responses:
-        201:
-          description: Aluno criado
-          schema:
-            $ref: '#/definitions/Aluno'
-
 definitions:
   Aluno:
     type: object
