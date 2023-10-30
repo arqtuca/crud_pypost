@@ -1,7 +1,7 @@
 from fastapi import FastAPI
-from uvicorn import uvicorn
 import psycopg2
 from pydantic import BaseModel
+import uvicorn
 
 
 class Aluno(BaseModel):
