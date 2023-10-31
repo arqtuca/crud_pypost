@@ -1,7 +1,7 @@
 from fastapi import FastAPI
+import uvicorn
 import psycopg2
 from pydantic import BaseModel
-import uvicorn
 
 
 class Aluno(BaseModel):
@@ -11,6 +11,7 @@ class Aluno(BaseModel):
   nota_segundo_semestre: float
   nome_professor: str
   numero_sala: int
+
 
 
 app = FastAPI(debug=True)
@@ -110,11 +111,6 @@ def deletar_aluno(id: int):
   connection.commit()
   return id
 
+
 if __name__ == '__main__':
-
-  # Atualiza o código para passar o parâmetro send à função principal do aplicativo
-
-  from gunicorn import gunicorn
-
-  def main():
-    app
+  uvicorn.run(app, host='00.0.0.0', port=8000)
