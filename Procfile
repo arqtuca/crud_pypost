@@ -1,1 +1,1 @@
-uvicorn main:app --host=0.0.0.0 --port=8000 --reload
+web: uvicorn main:app --host "dpg-ckushv3amefc73cek860-a.oregon-postgres.render.com" --port 5432
