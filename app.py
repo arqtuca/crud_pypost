@@ -112,11 +112,5 @@ def deletar_aluno(id: int):
   return id
 
 
-def main():
-
-  # Adiciona o parâmetro send
-
-  uvicorn.run(app, host="dpg-ckushv3amefc73cek860-a.oregon-postgres.render.com", port=8000, send=send)
-
 if __name__ == '__main__':
-  main()
+  uvicorn.run(app, host="dpg-ckushv3amefc73cek860-a.oregon-postgres.render.com", port=8000, send=send)
