@@ -1,6 +1,6 @@
 uvicorn==0.22.0
 fastapi==0.71.0
-pydantic==1.0.0
+pydantic==1.7.1
 pydantic_core==2.10.1
 psycopg2==2.9.9
 gunicorn==20.0.3
