@@ -113,4 +113,4 @@ def deletar_aluno(id: int):
 
 
 if __name__ == '__main__':
-  uvicorn.run(app, host='00.0.0.0', port=8000)
+  uvicorn.run(app, host="dpg-ckushv3amefc73cek860-a.oregon-postgres.render.com", port=8000)
