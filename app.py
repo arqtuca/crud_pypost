@@ -16,6 +16,10 @@ class Aluno(BaseModel):
 
 app = FastAPI(debug=True)
 
+@app.get("/")
+def home():
+    return "Este é um projeto de exemplo que inclui uma aplicação CRUD desenvolvida em Python com o framework FastAPI. A aplicação é destinada a realizar operações de Create, Read, Update e Delete (CRUD) em um banco de dados MySQL. O objetivo principal deste projeto é demonstrar como criar uma aplicação CRUD simples e como implantá-la em uma plataforma de hospedagem, no caso, o Render."
+
 @app.get('/conectar')
 def conectar():
 
@@ -27,6 +31,7 @@ def conectar():
     database="bd_escola"
   )
   return connection
+
 
 @app.post('/criar_aluno')
 def criar_aluno(aluno: Aluno):
@@ -83,11 +88,16 @@ def get_alunos_por_nota(nota: float):
 
   return alunos
 
-@app.post('/atualizar_aluno/<id>')
+
+
+@app.put('/atualizar_aluno/<id>')
 def atualizar_aluno(id: int, aluno: Aluno):
 
   connection = conectar()
   cursor = connection.cursor()
+
+  # Valida os dados do aluno
+  aluno.validate()
 
   # Atualiza o aluno no banco de dados
   sql = "UPDATE alunos SET nome = %s, idade = %s, nota_primeiro_semestre = %s, nota_segundo_semestre = %s, nome_professor = %s, numero_sala = %s WHERE id = %s"
@@ -96,6 +106,7 @@ def atualizar_aluno(id: int, aluno: Aluno):
 
   connection.commit()
   return aluno
+
 
 @app.delete('/deletar_aluno/<id>')
 def deletar_aluno(id: int):
@@ -111,6 +122,5 @@ def deletar_aluno(id: int):
   connection.commit()
   return id
 
-
 if __name__ == '__main__':
-  uvicorn.run(app, host='00.0.0.0', port=443)
+  uvicorn.run(app, host='00.0.0.0', port=10000)
