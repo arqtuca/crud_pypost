@@ -1,7 +1,8 @@
 from fastapi import FastAPI
-import mysql.connector
-from pydantic import BaseModel
+import uvicorn
 import psycopg2
+from pydantic import BaseModel
+
 
 class Aluno(BaseModel):
   nome: str
@@ -11,7 +12,9 @@ class Aluno(BaseModel):
   nome_professor: str
   numero_sala: int
 
-app = FastAPI()
+
+
+app = FastAPI(debug=True)
 
 @app.get("/")
 def home():
@@ -120,4 +123,4 @@ def deletar_aluno(id: int):
   return id
 
 if __name__ == '__main__':
-  uvicorn.run(app, host='postgres://root:tOqBSmsaLEie6ZSM2GPcewVCZ1DScvL7@dpg-ckushv3amefc73cek860-a/bd_escola', port=8000)
+  uvicorn.run(app, host='postgres://root:tOqBSmsaLEie6ZSM2GPcewVCZ1DScvL7@dpg-ckushv3amefc73cek860-a/bd_escola', port=10000)
