@@ -1,1 +1,1 @@
-uvicorn app:app --host="https://crud-py-to-post.onrender.com" --port=8000
+web: uvicorn app:app --host=0.0.0.0 --port=8000
