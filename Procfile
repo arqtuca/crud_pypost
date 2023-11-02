@@ -1,1 +1,1 @@
-uvicorn app:app --host=postgres://root:tOqBSmsaLEie6ZSM2GPcewVCZ1DScvL7@dpg-ckushv3amefc73cek860-a/bd_escola --port=10000
+uvicorn app:app --host=0.0.0.0 --port=10000
