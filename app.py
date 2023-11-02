@@ -123,4 +123,4 @@ def deletar_aluno(id: int):
   return id
 
 if __name__ == '__main__':
-  uvicorn.run(app, host='https://crud-py-to-post.onrender.com', port=10000)
+  uvicorn.run(app, host='0.0.0.0', port=10000)
