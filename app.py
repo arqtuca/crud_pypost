@@ -123,5 +123,9 @@ def deletar_aluno(id: int):
   connection.commit()
   return id
 
+import os
+
+port = int(os.environ.get("PORT", 8080))  # Use a porta padrão 8080 se a variável de ambiente não estiver definida
+
 if __name__ == '__main__':
-    uvicorn.run(app, host='0.0.0.0', port=8080)
+    uvicorn.run(app, host='0.0.0.0', port=port)
